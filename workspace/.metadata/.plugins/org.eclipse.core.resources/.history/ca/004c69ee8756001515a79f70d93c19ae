@@ -1,0 +1,98 @@
+package leapMotion;
+
+import java.awt.AWTException;
+import java.awt.Dimension;
+import java.awt.GraphicsEnvironment;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.event.InputEvent;
+import java.io.IOException;
+
+import javax.swing.JOptionPane;
+
+import com.leapmotion.leap.*;
+
+class Sample {
+    public void main(String[] args) {
+    	
+    	
+    	// Create a sample listener and controller
+        SampleListener listener = new SampleListener();
+        Controller controller = new Controller();
+
+        // Have the sample listener receive events from the controller
+        controller.addListener(listener);
+
+        // Keep this process running until Enter is pressed
+        System.out.println("Press Enter to quit...");
+        JOptionPane.showMessageDialog(null, "olá");
+        while(true);
+        /*try {
+            System.in.read();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+    }
+}
+
+class SampleListener extends Listener {
+	private int valorXY[] = {0,0};
+	private double cordX=0,cordY=0; 
+	boolean segurando = false;
+	
+	public void onConnect(Controller controller) {
+	    System.out.println("Connected");
+	    controller.enableGesture(Gesture.Type.TYPE_SWIPE);
+	    controller.enableGesture(Gesture.Type.TYPE_CIRCLE);
+	}
+
+	public void onFrame(Controller controller) {
+	    Frame frame = controller.frame();
+	    Hand mao1 = frame.hands().get(0);
+	    FingerList listaDedos = mao1.fingers();
+	    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	    double width = screenSize.getWidth();
+	    double height = screenSize.getHeight();
+	    
+	    Robot robot;
+	    if(listaDedos.get(1).isValid()){
+	    	
+	    	if(Math.abs(valorXY[0]-listaDedos.get(1).tipPosition().getX())>0.3)
+    			valorXY[0] = (int) listaDedos.get(1).tipPosition().getX();
+    		if(Math.abs(valorXY[1]-listaDedos.get(1).tipPosition().getY())>0.3)
+    			valorXY[1] = (int) listaDedos.get(1).tipPosition().getY();
+    	
+    	
+    		if(Math.abs(valorXY[0])<100)
+    			cordX= width*(valorXY[0]+100)/200;
+    		if(valorXY[1]-50>0&&valorXY[1]-300<0)
+    			cordY= height-height*(valorXY[1]-50)/(double)250;
+    		
+	    	if(listaDedos.get(2).isExtended()||listaDedos.get(3).isExtended()){
+	    		segurando=false;
+	    	}else{
+	    		if(!segurando){
+	    			try {
+	    				robot = new Robot(GraphicsEnvironment.getLocalGraphicsEnvironment()
+	    						.getDefaultScreenDevice());
+	    				robot.mousePress(InputEvent.BUTTON1_MASK);
+	    				robot.mouseRelease(InputEvent.BUTTON1_MASK);
+	    				segurando = true;
+	    			} catch (AWTException e) {
+	    				// TODO Auto-generated catch block
+	    				e.printStackTrace();
+	    			}
+	    		}
+	    	}
+	    	System.out.println(cordX);
+		try {
+			robot = new Robot(GraphicsEnvironment.getLocalGraphicsEnvironment()
+					.getDefaultScreenDevice());
+			robot.mouseMove((int)cordX, (int)cordY);
+		} catch (AWTException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	  }
+	}
+}

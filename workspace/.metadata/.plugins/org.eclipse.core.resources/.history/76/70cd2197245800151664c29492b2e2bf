@@ -1,0 +1,13 @@
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args){
+		Scanner scanner = new Scanner(System.in);
+		int dado;
+		Arduino testeArd = new Arduino();
+		while(true){
+			dado = scanner.nextInt();
+			testeArd.arduino.enviaDados(dado);
+		}
+	}
+}
