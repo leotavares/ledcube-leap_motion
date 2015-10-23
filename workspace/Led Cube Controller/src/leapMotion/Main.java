@@ -14,14 +14,13 @@ public class Main {
 
         // Have the sample listener receive events from the controller
         controller.addListener(listener);
-
 		
 		while(true);
 	}
 }
 
 class SampleListener extends Listener {
-	Arduino testeArd = new Arduino();
+	PortController arduino = new PortController("COM4",9600);
 	public void onConnect(Controller controller) {
 	    System.out.println("Connected");
 	    controller.enableGesture(Gesture.Type.TYPE_SWIPE);
@@ -59,6 +58,6 @@ class SampleListener extends Listener {
 	    }else{
 	    	keyValue=200;
 	    }
-		testeArd.arduino.enviaDados(keyValue);
+		arduino.enviaDados(keyValue);
 	}
 }

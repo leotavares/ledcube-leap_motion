@@ -1,0 +1,11 @@
+package leapMotion;
+public class Arduino {
+  public PortController arduino;
+  
+  /**
+   * Construtor da classe Arduino
+   */
+  public Arduino(){
+      arduino = new PortController("COM4",9600);//Windows - porta e taxa de transmissão
+  }  
+}

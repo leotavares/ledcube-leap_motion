@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="C:/Users/Leo/Desktop/workspace/Led Cube Controller/Files Needed/RXTXcomm.jar">
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="C:/Users/LOA/Documents/GitHub/ledcube-leap_motion/workspace/Led Cube Controller/bin/Files Needed/x64/RXTXcomm.jar">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Users/Marcos/Desktop/Leap/mfz-rxtx-2.2-20081207-win-x64"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Users/LOA/Documents/GitHub/ledcube-leap_motion/workspace/Led Cube Controller/bin/Files Needed/x64"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Leo/Desktop/workspace/Led Cube Controller/Files Needed/LeapJava.jar">
+	<classpathentry kind="lib" path="C:/Users/LOA/Documents/GitHub/ledcube-leap_motion/workspace/Led Cube Controller/bin/Files Needed/x64/LeapJava.jar">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Users/Marcos/Desktop/Leap/LeapSDK/lib/x64"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Users/LOA/Documents/GitHub/ledcube-leap_motion/workspace/Led Cube Controller/bin/Files Needed/x64"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
